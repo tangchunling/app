@@ -1,0 +1,4 @@
+/* yaohuo.wxss */
+@import '../../wxss/order/yaohuo.wxss';
+
+@import "../../component/categories.wxss";

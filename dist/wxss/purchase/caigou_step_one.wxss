@@ -1,0 +1,67 @@
+/**
+ * JUI Less global variables / config file
+ * 基本设置
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+.c-normal {
+  color: #000;
+}
+.c-week {
+  color: #888888;
+}
+.c-success {
+  color: #FF4F00;
+}
+.f32 {
+  font-size: 32rpx;
+}
+.f28 {
+  font-size: 28rpx;
+}
+.f24 {
+  font-size: 24rpx;
+}
+.f36 {
+  font-size: 36rpx;
+}
+.f26 {
+  font-size: 26rpx;
+}
+.common-cell {
+  margin-bottom: 10rpx;
+  background: #fff;
+}
+.common-cell::before {
+  border-top: none;
+}
+.common-cells {
+  background: transparent;
+}
+/**
+ * JUI Less utils v1.2
+ * 基本工具：常用的属性集
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+page {
+  background: #EFEFF4;
+  min-height: 100%;
+  display: block;
+}
+.searchbar-result {
+  margin-top: 0;
+}
+.searchbar-result .txt {
+  color: #666666;
+}
+.searchbar-result .ntxt {
+  color: #00ABF2;
+}
+.searchbar-result .weui-cell {
+  padding: 25rpx 15px;
+}

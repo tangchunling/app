@@ -1,0 +1,7 @@
+@import '../../wxss/order/forbidden.wxss';
+@import '../../style/base/variable/weui-button.wxss';
+
+ .page__bd_spacing{
+   padding:0 50rpx;
+   margin-top: 40rpx;
+ }

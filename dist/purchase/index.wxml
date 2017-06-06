@@ -1,0 +1,22 @@
+<view class="page">
+  <image class="head" src="../images/purchase_head_750_180.png"
+  mode="aspectFit"></image>
+    <view class="weui-flex">
+      <view class="weui-flex__item block">
+        <navigator class="placeholder" url="/purchase/caigou_step_one">
+          <div class="tag">112</div>
+          <image src="../images/basket_96_97.png"></image>
+          <text>今日要货汇总</text>
+        </navigator>
+      </view>
+      <view class="weui-flex__item block">
+        <view class="placeholder">
+          <image src="../images/bill_96_97.png"></image>
+          <text>采购订单录入</text>
+        </view>
+      </view>
+    </view>
+    <!--<view class="page__bd page__bd_spacing">
+      <button class="weui-btn weui-btn-primary" bindtap="onTest" >设置手机号</button>
+    </view>--> 
+</view>

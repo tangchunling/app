@@ -1,0 +1,19 @@
+page {
+  background: #EFEFF4;
+  min-height: 100%;
+  display: block;
+}
+.page .logo {
+  width: 262rpx;
+  height: 84rpx;
+  margin: auto;
+  display: block;
+  padding-top: 125rpx;
+}
+.page__bd {
+  margin-top: 125rpx;
+}
+.page__bd_spacing {
+  padding: 0 30rpx;
+  margin-top: 400rpx;
+}

@@ -1,0 +1,2 @@
+/* good_create.wxss */
+@import '../wxss/purchase/good_new.wxss';

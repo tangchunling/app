@@ -1,0 +1,148 @@
+/**
+ * JUI Less common-class v1.0
+ * 基本样式
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+@charset: 'utf-8';
+
+@import 'utils';
+
+//	base reset			基本						L
+//	position			定位						L
+//	layout				布局						L
+//	dimension			尺寸						L
+//	margin & padding	补白						L
+//	border				边框						L
+//	background			背景						L
+//	font & color		字体和颜色等				L
+//	text & other		文本、文本装饰等			L
+//	list				列表						L
+//	table				表格						L
+//	user interface		用户界面					L
+//	transform			变换				css3	L
+//	transition			过渡				css3	L
+//	animation			动画				css3	L
+//	mixins				属性集					L
+
+// base reset
+*{
+	.bs();
+}
+
+// html, body, div{
+// 	.fs(@rootSize);
+// 	.ff(~'"微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif');
+// }
+
+// a{
+// 	.td();
+// }
+
+// position
+// .posr{
+// 	.pos-r();
+// }
+// .posa{
+// 	.pos-a();
+// }
+// .posf{
+// 	.pos-f();
+// }
+.dn, .hidden{
+	.dn();
+}
+[hide]{
+	.visibility(hidden);
+}
+.db, .active{
+	.db();
+}
+
+// display: inline-block 消除间隙
+.dib-wrap{
+	.fs(0);//* 所有浏览器 */
+	// *word-spacing: -1px;/* IE6、7 */
+	> .dib{
+		.fs(12px);
+		.va-t();
+		letter-spacing: normal;
+		word-spacing: normal;
+	}
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0){
+	// firefox 中 letter-spacing 会导致脱离普通流的元素水平位移
+	.dib-wrap{
+		letter-spacing: -5px;
+		// Safari 等不支持字体大小为 0 的浏览器, N 根据父级字体调节/
+	}
+}
+.dib{
+	.dib();
+	// *display: inline;
+	// *zoom: 1;
+}
+
+// float
+.flt{
+	.fl-lt();
+}
+.frt{
+	.fl-rt();
+}
+.nofl{
+	.no-fl();
+}
+
+// 清除浮动
+.clearfix{
+	.clear-fix();
+}
+
+// dimension
+// full line wrap
+.wrapper{
+	width: 100%;
+	min-height: 0;
+}
+//
+.wrap{
+	.pos-r();
+	.content(@width: @normalWidth);
+}
+
+// border
+.brd-normal{
+	.brd(@borderColor: #D3D3D3);
+}
+
+.noborder{
+	.no-brd() !important;
+}
+//border-radius
+// .brdr{
+// 	.brdr(@brdrName; @radius){
+// 		&-@{brdrName}{
+// 			.brdr(@radius);
+// 		}
+// 	}
+// 	.brdr(3; 3px);
+// 	.brdr(4; 4px);
+// 	.brdr(5; 5px);
+// }
+
+//text-align
+.tac{
+	.ta-c() !important;
+}
+.talt{
+	.ta-lt() !important;
+}
+.tart{
+	.ta-rt() !important;
+}
+
+.bg-list();

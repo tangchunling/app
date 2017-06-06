@@ -1,0 +1,137 @@
+@import '../base/global';
+@import '../base/utils';
+
+page {
+  background: #EFEFF4;
+  min-height: 100%;
+  display: block;
+}
+.weui-navbar{
+	background: #FAFAFA;
+}
+.weui-tab-header{
+	line-height: 88rpx;
+	height: 88rpx;
+	.ta-rt;
+	font-size: 28rpx;
+}
+.weui-tab-tl{
+	float: left;
+	.mgl(15px);
+}
+.weui-tab-tr{
+	.mgr(15px);
+}
+.weui-cell{
+	font-size: 28rpx;
+}
+.zb-weui-cells .weui-cell{
+	padding: 0 15px;
+	line-height: 88rpx;
+}
+.weui-cell__bd{
+	color: #999999;
+	position: relative;
+}
+.weui-navbar__slider{
+	background-color: #00ADEF;
+	width: 5em;
+}
+.weui-navbar__item.weui-bar__item_on{
+	color: #00ABF2;
+}
+.weui-search-bar{
+	border-bottom: none;
+}
+#toolbar{
+	z-index: 1;
+}
+#toolbar::after{
+	border-bottom: none;
+}
+#toolbar::before{
+	border-top: none;
+}
+.weui-cell__bd text{
+	.pdr(13px);
+	position: relative;
+}
+.weui-cell__bd text::after{
+	content:" ";
+	display:inline-block;
+	height:6px;
+	width:6px;
+	border-width:0 1px 1px 0;
+	border-color:#000;
+	border-style:solid;
+	-webkit-transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+	transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+	position:relative;
+	top:-2px;
+	position:absolute;
+	top:50%;
+	.mgt(-4px);
+	right:2px;
+}
+#toolbar .weui-cell__bd{
+	color: #000;
+}
+#toolbar .weui-cell__ft{
+	color: #000;
+}
+#toolbar .weui-cell__ft image{
+	width: 20rpx;
+	height: 20rpx;
+	vertical-align:middle;
+
+}
+#toolbar .weui-cell{
+	padding: 0 114rpx;
+	line-height: 88rpx;
+}
+#results{
+	.mgt(0);
+	background:#EFEFF4;
+}
+#results{
+	.mgt(5px);
+	
+}
+.weui-search-bar.bb, .weui-tab-header.bb{
+	border-bottom: 1rpx solid #D9D9D9;
+}
+.xg{
+	width:36rpx;
+	height: 36rpx;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.tag{
+	display: inline-block;
+	border-radius: 4rpx;
+	width: 50rpx;
+	height: 40rpx;
+	background: #FF4F17;
+	text-align: center;
+	color: #fff;
+	.mgr(10rpx);
+	font-size: 28rpx;
+	line-height: 40rpx;
+}
+.yaohuomodal input {
+	.mgt(30rpx);
+	font-size: 60rpx;
+	color: #2A2A2A;
+}
+.weui-cell__bd wx-text{
+	padding: 10px 15px 10px 0;
+}
+.weui-cell__bd wx-text.active{
+	color: #39A5F8;
+}
+.weui-cell__bd wx-text.active::after{
+	border-width:1px 0 0 1px;
+	border-color:#39A5F8;
+}

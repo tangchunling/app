@@ -1,0 +1,18 @@
+{
+	"name": "wxapp",
+	"version": "1.6.0",
+	"title": "速店助手",
+	"description": "Sudian Assistant",
+	"private": true,
+	"authors": "Sn F2E Team",
+	"copyright": "/*! freshfirst.cn v{{VERSION}} | Sn F2E Team (c) 2016 - 2017 */\n",
+	"scripts": {
+		"dev": "gulp"
+	},
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"gulp-less": "^3.3.0",
+		"gulp-rename": "^1.2.2",
+		"less-plugin-autoprefix": "^1.5.1"
+	}
+}

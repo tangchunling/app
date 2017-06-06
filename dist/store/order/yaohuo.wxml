@@ -1,0 +1,131 @@
+<import src="../../component/categories.wxml"/>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-tab-header bb">
+            <text class="weui-tab-tl">商品名称</text>
+            <text class="weui-tab-tr">配货量</text>
+          </view>
+          <view class="weui-cells weui-cells_after-title zb-weui-cells">
+            <view class="weui-cell" wx:for="{{zbGoods}}" wx:key="unique">
+              <view class="weui-cell__bd">{{item.product_name}}</view>
+              <view class="weui-cell__ft">{{item.quantity}}{{item.unit}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-search-bar bb" style="z-index: 1">
+            <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input f26" placeholder="搜索商品名称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="onSearchMDGoods" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+                </view>
+              </view>
+              <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text f26">搜索商品名称</view>
+              </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn f26" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+          </view>
+          <view class="weui-cells weui-cells_after-title" id="toolbar">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">
+                <text bindtap="onTriggerCategories" class="{{mode == 2?'active':''}}">全部类目</text>
+              </view>
+              <view class="weui-cell__ft" style="font-size: 0">
+              <view style="display: inline-block;vertical-align:middle; font-size: 28rpx;" bindtap="onSortMDgoods">智能排序</view>
+                <image src="../../images/group_20.png" wx:if="{{mdGoodsSortMode === 0}}"></image>
+                <image src="../../images/group_20_asc.png" wx:elif="{{mdGoodsSortMode === 1}}"></image>
+                <image src="../../images/group_20_desc.png" wx:elif="{{mdGoodsSortMode === 2}}"></image>
+              </view>
+            </view>
+          </view>
+          <view style="height: auto;min-height: 100%;">
+            <template is="categories" data="{{ ...__cpdata__categories__ }}"/>
+          </view>
+          <view class="weui-cells searchbar-result" id="results" hidden="{{mode == 2}}">
+            <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="loadMoreMDGoods">
+              <view class="weui-cells common-cells weui-cells_after-title">
+                <view wx:for="{{mdGoods}}" wx:key="unique" style="margin-bottom: 10rpx">
+                  <view class="weui-cell" style="background: #fff" >
+                    <view class="weui-cell__bd">
+                      <view class="f32 c-normal"><span class="tag" wx:if="{{item.tag != '' && item.tag != null}}">{{item.tag[0]}}</span>{{item.product_name}}<span class="f28 c-success">({{item.unit}})</span></view>
+                      <view class="f24 c-week" style="margin-top: 10rpx;">配送中心库存 <span class="c-normal f36">{{item.stock}}</span> 要货量 <span class="c-success f36">0</span></view>
+                      <view class="f24 c-week">三天日均销量 <span class="c-normal f36">{{item.avg_three_amt}}</span> 门店库存 <span class="c-success f36">{{item.orgstock}}</span></view>
+                      <image src="../../images/xg.png" class="xg" bindtap="showModifyQty" data-index="{{index}}"></image>
+                    </view>
+                  </view>
+                  <view class="weui-cell weui-cell_access" style="background: #fff" wx:if="{{item.remark != '' && item.remark != null}}">
+                    <view class="weui-cell__bd f28 c-week">
+                      备注：{{item.remark}}
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-tab-header bb">
+            <text class="weui-tab-tl">商品名称</text>
+            <text class="weui-tab-tr">配货量</text>
+          </view>
+          <view class="jr">
+            <view class="weui-cells common-cells weui-cells_after-title">
+              <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="loadMoreJRGoods">
+                <view class="weui-cells common-cells weui-cells_after-title">
+                  <view wx:for="{{jrGoods}}" wx:key="unique" style="margin-bottom: 10rpx">
+                    <view class="weui-cell" style="background: #fff" >
+                      <view class="weui-cell__bd">
+                        <view class="f32 c-normal"><span class="tag" wx:if="{{item.tag != '' && item.tag != null}}">{{item.tag[0]}}</span>{{item.product_name}}<span class="f28 c-success">({{item.unit}})</span></view>
+                        <view class="f24 c-week" style="margin-top: 10rpx;">配送中心库存 <span class="c-normal f36">{{item.stock}}</span> 要货量 <span class="c-success f36">{{item.quantity}}</span></view>
+                        <image src="../../images/xg.png" class="xg" bindtap="showJRModifyQty" data-index="{{index}}"></image>
+                      </view>
+                    </view>
+                    <view class="weui-cell weui-cell_access" style="background: #fff" wx:if="{{item.remark != '' && item.remark != null}}">
+                      <view class="weui-cell__bd f28 c-week">
+                        备注：{{item.remark}}
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<modal class="yaohuomodal" 
+hidden="{{hiddenYaohuoModal}}"
+confirmText="确定"
+bindcancel="onCloseYaohuoModal"
+bindconfirm="onSaveYaohuo">
+<view><text class="f32 c-normal">{{modifyMDGood.product_name}}</text><text class="f28 c-week">({{modifyMDGood.unit}})</text></view>
+<view><text class="f24 c-week">参考规格</text><text class="f28 c-success">{{modifyMDGood.spec_num}}{{modifyMDGood.unit}}/{{modifyMDGood.spec_unit}}</text></view>
+<input type="digit" value="{{modifyMDQty}}" focus="{{!hiddenYaohuoModal}}" bindinput="changeMDQty" placeholder="最低要货数量不少于100且为规格的整数倍" placeholder-style="font-size:24rpx;color:#9B9B9B;" />
+</modal>
+<modal class="yaohuomodal" 
+hidden="{{hiddenJRYaohuoModal}}"
+confirmText="确定"
+bindcancel="onCloseJRYaohuoModal"
+bindconfirm="onChangeYaohuo">
+<view><text class="f32 c-normal">{{modifyJRGood.product_name}}</text><text class="f28 c-week">({{modifyJRGood.unit}})</text></view>
+<view><text class="f24 c-week">参考规格</text><text class="f28 c-success">{{modifyJRGood.spec_num}}{{modifyJRGood.unit}}/{{modifyJRGood.spec_unit}}</text></view>
+<input type="digit" value="{{modifyJRQty}}" focus="{{!hiddenJRYaohuoModal}}" bindinput="changeJRQty" placeholder="最低要货数量不少于100且为规格的整数倍" placeholder-style="font-size:24rpx;color:#9B9B9B;" />
+</modal>

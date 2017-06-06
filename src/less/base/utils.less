@@ -1,0 +1,762 @@
+/**
+ * JUI Less utils v1.2
+ * 基本工具：常用的属性集
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+@charset: 'utf-8';
+
+@import 'global';
+
+//	position			定位						L21
+//	layout				布局						L44
+//	dimension			尺寸						L93
+//	margin & padding	补白						L175
+//	border				边框						L253
+//	background			背景						L363
+//	font & color		字体和颜色等				L380
+//	text & other		文本、文本装饰等			L416
+//	list				列表						L460
+//	table				表格						L461
+//	user interface		用户界面					L462
+//	transform			变换				css3	L473
+//	transition			过渡				css3	L476
+//	animation			动画				css3	L485
+//	mixins				属性集					L488
+
+// position 定位
+.pos-r(){
+	position: relative;
+}
+
+.pos-a(@zIndex: 1; @top: 0; @left: 0) when (isnumber(@zIndex)){
+	position: absolute;
+	z-index: @zIndex;
+	top: @top;
+	left: @left;
+}
+.pos-atr(@zIndex: 1; @top: 0; @right: 0) when (isnumber(@zIndex)){
+	position: absolute;
+	z-index: @zIndex;
+	top: @top;
+	right: @right;
+}
+.pos-abl(@zIndex: 1; @bottom: 0; @left: 0) when (isnumber(@zIndex)){
+	position: absolute;
+	z-index: @zIndex;
+	bottom: @bottom;
+	left: @left;
+}
+.pos-abr(@zIndex: 1; @bottom: 0; @right: 0) when (isnumber(@zIndex)){
+	position: absolute;
+	z-index: @zIndex;
+	bottom: @bottom;
+	right: @right;
+}
+.pos-a() when (default()){
+	position: absolute;
+}
+
+.pos-f(@zIndex; @top: 0; @left: 0) when (@zIndex){
+	position: fixed;
+	z-index: @zIndex;
+}
+.pos-f() when (default()){
+	position: fixed;
+}
+
+// layout 布局
+// display
+.db(){
+	display: block;
+}
+.dib(){
+	display: inline-block;
+}
+.di(){
+	display: inline;
+}
+.dn(){
+	display: none;
+}
+
+// float 浮动
+.fl-lt(){
+	float: left;
+}
+.fl-rt(){
+	float: right;
+}
+.no-fl(){
+	float: none;
+}
+// 清除浮动
+.clear-fix(){
+	.db();
+	clear: both;
+}
+//
+// visibility	可视性
+//	visible		可见
+//	hidden		隐藏
+//	collapse
+//
+.visibility(@val: visible) when ( iskeyword(@val) ){
+	visibility: @val;
+}
+// overflow
+.of(@val: auto) when ( iskeyword(@val) ){
+	overflow: @val;
+}
+.ofx(@val: auto) when ( iskeyword(@val) ){
+	overflow-x: @val;
+}
+.ofy(@val: auto) when ( iskeyword(@val) ){
+	overflow-y: @val;
+}
+
+// dimension 尺寸
+// display, width & height
+.box(@display: block; @width: auto; @height)
+	when ( isnumber(@height) ) {
+	display: @display;
+	width: @width;
+	height: @height;
+}
+.box(@display: block; @width: auto; @height)
+	when ( iskeyword(@height) ) {
+	display: @display;
+	width: @width;
+	height: @height;
+}
+.box(@display: block; @width: auto) when (default()) {
+	display: @display;
+	width: @width;
+}
+// width, height & line-height
+.wh(@width: auto; @height: auto){
+	width: @width;
+	height: @height;
+}
+.hlh(@height: auto){
+	height: @height;
+	line-height: @height;
+}
+.hlh(@height: auto; @lineHeight: normal){
+	height: @height;
+	line-height: @lineHeight;
+}
+.whlh(@width: auto; @height: auto){
+	.wh(@width: @width; @height: @height);
+	line-height: @height;
+}
+.whlh(@width: auto; @height: auto; @lineHeight: normal){
+	.wh(@width: @width; @height: @height);
+	line-height: @lineHeight;
+}
+
+.content(@width: @normalWidth; @height)
+	when ( isnumber(@height) ) {
+	.mg-lt-rt-auto();
+	.wh(@width: @width; @height: @height);
+}
+.content(@width: @normalWidth; @height)
+	when ( iskeyword(@height) ) {
+	.mg-lt-rt-auto();
+	.wh(@width: @width; @height: @height);
+}
+.content(@width: @normalWidth) when (default()){
+	.mg-lt-rt-auto();
+	width: @normalWidth;
+}
+
+// margin & padding 补白
+.mg-lt-rt-auto(){
+	margin-left: auto;
+	margin-right: auto;
+}
+.mg(@margin){
+	margin: @margin;
+}
+.mg(@top: 0; @right: 0; @bottom: 0; @left: 0)
+	when 
+	not ( isnumber(@right) )
+	and not ( ispixel(@right) )
+	and not ( ispercentage(@right) )
+	and not ( @right = auto )
+	and not ( isnumber(@bottom) )
+	and not ( ispixel(@bottom) )
+	and not ( ispercentage(@bottom) )
+	and not ( @bottom = auto )
+	and not ( isnumber(@left) )
+	and not ( ispixel(@left) )
+	and not ( ispercentage(@left) )
+	and not ( @left = auto) {
+	.mg(@top);
+}
+.mg(@top: 0; @right: 0; @bottom: 0; @left: 0) when (default()) {
+	.mg(@arguments);
+}
+.mgt(@val: 0) when ( isnumber(@val) ) {
+	margin-top: @val;
+}
+.mgr(@val: 0) when ( isnumber(@val) ) {
+	margin-right: @val;
+}
+.mgb(@val: 0) when ( isnumber(@val) ) {
+	margin-bottom: @val;
+}
+.mgl(@val: 0) when ( isnumber(@val) ) {
+	margin-left: @val;
+}
+
+.pd(@padding){
+	padding: @padding;
+}
+.pd(@top, @right){
+	padding: @top @right;
+}
+.pd(@top: 0; @right: 0; @bottom: 0; @left: 0)
+	when 
+	not ( isnumber(@right) )
+	and not ( ispixel(@right) )
+	and not ( ispercentage(@right) )
+	and not ( @right = auto )
+	and not ( isnumber(@bottom) )
+	and not ( ispixel(@bottom) )
+	and not ( ispercentage(@bottom) )
+	and not ( @bottom = auto )
+	and not ( isnumber(@left) )
+	and not ( ispixel(@left) )
+	and not ( ispercentage(@left) )
+	and not ( @left = auto)	{
+	.pd(@top);
+}
+.pd(@top: 0; @right: 0; @bottom: 0; @left: 0) when (default()) {
+	.pd(@arguments);
+}
+.pdt(@val: 0) when ( isnumber(@val) ) {
+	padding-top: @val;
+}
+.pdr(@val: 0) when ( isnumber(@val) ) {
+	padding-right: @val;
+}
+.pdb(@val: 0) when ( isnumber(@val) ) {
+	padding-bottom: @val;
+}
+.pdl(@val: 0) when ( isnumber(@val) ) {
+	padding-left: @val;
+}
+
+// border 边框
+.no-brd(){
+	border: none;
+}
+.no-brd-t(){
+	border-top: none;
+}
+.no-brd-r(){
+	border-right: none;
+}
+.no-brd-b(){
+	border-bottom: none;
+}
+.no-brd-l(){
+	border-left: none;
+}
+.brd(@borderWidth; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0px) {
+	.no-brd();
+}
+.brd(@borderWidth; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0) {
+	.no-brd();
+}
+.brd(@borderWidth: 1px; @borderStyle: solid; @borderColor: @black)
+	when (@borderWidth > 0px){
+	border: @arguments;
+}
+.brd(@borderColor: @black) when (iscolor(@borderColor)){
+	.brd(1px, solid, @borderColor);
+}
+
+.brd-t(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0px) {
+	.no-brd-t();
+}
+.brd-t(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0) {
+	.no-brd-t();
+}
+.brd-t(@borderWidth: 1px; @borderStyle: solid; @borderColor: @black)
+	when (@borderWidth > 0px){
+	border-top: @arguments;
+}
+.brd-t(@borderColor: @black) when (iscolor(@borderColor)){
+	.brd-t(1px, solid, @borderColor);
+}
+
+.brd-r(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0px) {
+	.no-brd-r();
+}
+.brd-r(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0) {
+	.no-brd-r();
+}
+.brd-r(@borderWidth: 1px; @borderStyle: solid; @borderColor: @black)
+	when (@borderWidth > 0px){
+	border-right: @arguments;
+}
+.brd-r(@borderColor: @black) when (iscolor(@borderColor)){
+	.brd-r(1px, solid, @borderColor);
+}
+
+.brd-b(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0px) {
+	.no-brd-b();
+}
+.brd-b(@borderWidth ; @borderStyle; @borderColor)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0) {
+	.no-brd-b();
+}
+.brd-b(@borderWidth: 1px; @borderStyle: solid; @borderColor: @black)
+	when (@borderWidth > 0px){
+	border-bottom: @arguments;
+}
+.brd-b(@borderColor: @black) when (iscolor(@borderColor)){
+	.brd-b(1px, solid, @borderColor);
+}
+
+.brd-l(@borderWidth ; @borderStyle; @borderColor;)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0px) {
+	.no-brd-l();
+}
+.brd-l(@borderWidth ; @borderStyle; @borderColor;)
+	when (isnumber(@borderWidth)) and (@borderWidth = 0) {
+	.no-brd-l();
+}
+.brd-l(@borderWidth: 1px; @borderStyle: solid; @borderColor: @black)
+	when (@borderWidth > 0px){
+	border-left: @arguments;
+}
+.brd-l(@borderColor: @black) when (iscolor(@borderColor)){
+	.brd-l(1px, solid, @borderColor);
+}
+
+// border-radius
+.no-brdr(){
+	border-radius: none;
+}
+.brdr(@radius) when (isnumber(@radius)) and (@radius = 0){
+	.no-brdr();
+}
+.brdr(@radius) when (isnumber(@radius)) and (@radius = 0px){
+	.no-brdr();
+}
+.brdr(@radius) when (default()) {
+	border-radius: @radius;
+}
+
+// background 背景
+// background-color
+.bgc(@bgColor){
+	background-color: @bgColor;
+}
+
+// background-image 背景图设置（雪碧图）css sprite
+.bgi(@src) when (isstring(@src)){
+	background-image: url(@src);
+}
+.sprite(@src; @repeat: no-repeat; @posX: 0; @posY: 0){
+	.bgi(@src);
+	background-image: url(@src);
+	background-repeat: @repeat;
+	background-position: @posX @posY;
+}
+
+// font & color 字体和颜色
+// color
+.fgc(@fgColor){
+	color: @fgColor;
+}
+
+.ff(@font){
+	font-family: @font;
+}
+.bold(){
+	font-weight: bold;
+}
+.bolder(){
+	font-weight: bolder;
+}
+.lighter(){
+	font-weight: lighter;
+}
+
+// font & color & font-weight
+.fs(@size: @rootSize) when (isnumber(@size)){
+	font-size: @size;
+}
+.fs(@size) when (default()) {
+	font-size: @rootSize;
+}
+.fc(@fontSize: @rootSize; @color: #333333){
+	.fs(@fontSize);
+	color: @color;
+}
+.fcf(@fontSize: @rootSize; @color: #333333; @fontWeight: normal)
+	when ( iskeyword(@fontWeight) ){
+	.fc(@fontSize, @color);
+	font-weight: @fontWeight;
+}
+
+// text & other 文本、文本装饰等
+// text-align
+.ta-lt(){
+	text-align: left;
+}
+.ta-c(){
+	text-align: center;
+}
+.ta-rt(){
+	text-align: right;
+}
+
+// text-indent
+.ti(@val: 2em) when (isnumber(@val)){
+	text-indent: @val;
+}
+.notext(){
+	.ti(-10000em);
+}
+
+// vertical-align
+.va(@val: baseline){
+	vertical-align: @val;
+}
+.va-t(){
+	.va(top);
+}
+.va-m(){
+	.va(middle);
+}
+.va-b(){
+	.va(bottom);
+}
+
+// line-height
+.lh(@val: normal){
+	line-height: @val;
+}
+
+// text-decoration
+.td(@val: none){
+	text-decoration: @val;
+}
+
+// list 列表
+// table 表格
+// user interface 用户界面
+.ol(@val: none){
+	outline: @val;
+}
+.cs(@val: pointer){
+	cursor: @val;
+}
+.bs(@type: border-box){
+	box-sizing: @type;
+}
+
+// transform 变换
+// 尚空
+
+// transition 过渡
+.transition-all-500(@property: all; @duration: 500ms; @function: linear; @delay: 0ms){
+	// transition: @property @duration @function @delay;
+	transition-property: @property;
+	transition-duration: @duration;
+	transition-timing-function: @function;
+	transition-delay: @delay;
+}
+
+// animation 动画
+// 动画效果比较复杂，不适合抽象成 function
+
+// mixins 属性集
+
+// colors
+// 预生成 background-color
+.bg-list(){
+	.bgc-maker(@bgName; @bgColor){
+		&-@{bgName}{
+			.bgc(@bgColor) !important;
+		}
+	}
+	.bg{
+		.bgc-maker(blue, #7CB5EC);
+		.bgc-maker(darkgrey, #434348);
+		.bgc-maker(green, #90ED7D);
+		.bgc-maker(orange, #F7A35C);
+		.bgc-maker(purple, #8085E9);
+		.bgc-maker(pink, #F15C80);
+		.bgc-maker(yellow, #E4D354);
+		.bgc-maker(darkgreen, #2B908F);
+		.bgc-maker(red, #F45B5B);
+		.bgc-maker(cyan, #91E8E1);
+		.bgc-maker(lightgreen, #94E9E1);
+		.bgc-maker(white, @white);
+	}
+}
+
+.fg-list(){
+	.fgc-maker(@fgName; @fgColor){
+		&-@{fgName}{
+			.fgc(@fgColor) !important;
+		}
+	}
+	.fg{
+		.fgc-maker(blue, #7CB5EC);
+		.fgc-maker(darkgrey, #434348);
+		.fgc-maker(green, #90ED7D);
+		.fgc-maker(orange, #F7A35C);
+		.fgc-maker(purple, #8085E9);
+		.fgc-maker(pink, #F15C80);
+		.fgc-maker(yellow, #E4D354);
+		.fgc-maker(darkgreen, #2B908F);
+		.fgc-maker(red, #F45B5B);
+		.fgc-maker(cyan, #91E8E1);
+		.fgc-maker(lightgreen, #94E9E1);
+		.fgc-maker(white, @white);
+	}
+}
+
+// button maker
+.btn-maker(@name: normal;
+	@bgc: #C3C3C3;
+	@fontSize: @rootSize;
+	@color: @white;
+	@width: auto;
+	@height: 38px;
+	@lineHeight: 38px;
+	@borderRadius: 4px;
+	@borderWidth: 0px;
+	@borderColor: inherit;
+	@hoverBgc: darken(@bgc, 10%);
+	@activeBgc: lighten(@bgc, 5%)){
+	.btn.@{name}{
+		.whlh(@width, @height, @lineHeight - @borderWidth * 2);
+		.pd(0);
+		.fc(@fontSize, @color);
+		.bgc(@bgc);
+		.brd(@borderWidth, solid, @borderColor);
+		.brdr(@borderRadius);
+	}
+	.btn.@{name}:hover{
+		.bgc(@hoverBgc);
+	}
+	.btn.@{name}:active{
+		.bgc(@activeBgc);
+	}
+}
+
+// grid
+// .make-cell-basic(@col: 1){
+// 	.cell-@{col} {
+// 		width: @col * 100% / @colNumber;
+// 	}
+// }
+
+// .make-cell-prefix-basic(@col: 1;@num: @colNumber; @prefix) when ( @prefix ) {
+// 	.cell-@{prefix}-@{col} {
+// 		width: @col * 100% / @num;
+// 	}
+// }
+
+.cell-maker-prefix(@prefix; @col: 1; @cols: @colNumber) when (@col <= @cols) {
+	> .cell-@{prefix}-@{col}{
+		.dib();
+		.wh(@col * 100% / @cols, 2em);
+	}
+	.cell-maker-prefix(@prefix; @col + 1; @cols);
+}
+.cell-maker(@col: 1; @cols: @colNumber) when (@col <= @cols){
+	> .cell-@{col}{
+		.dib();
+		.wh(@col * 100% / @cols, 2em);
+	}
+	.cell-maker(@col + 1; @cols);
+}
+.grid-x(){
+	.grid{
+		.cell-maker-prefix(@prefix: x; 1; 10);
+	}
+}
+.grid(@cols: @colNumber) when (default()){
+	.grid{
+		.pos-r();
+		.db();
+		.ta-lt();
+		.fs(0);
+		width: 100%;
+
+		.cell-maker(1; @cols);
+
+		>[class*="cell-"]{
+			.ta-c();
+			.va-t();
+			.fs(@rootSize);
+		}
+	}
+}
+
+.form-maker(@type: base;
+	@fontSize: @rootSize;
+	@color: #c3c3c3;
+	@fieldHeight: 38px;
+	@labelWidth: 120px;
+	@inputWidth: auto;
+	@inputPaddingLeft: 10px;
+	@inpurBorderColor: @commonBorderColor;
+	@tipFontSize: 12px;
+	@tipHeight: 30px;
+	){
+	form.form{
+		.fc(@fontSize, @color);
+		>.field{
+			.pos-r();
+			.fc(@fontSize, @color);
+			// .mgb(@tipHeight);
+			height: @fieldHeight;
+			>label:first-child{
+				.pos-r();
+				.dib();
+				// .pdr(1em);
+				.ta-rt();
+				width: @labelWidth;
+				&.star:before{
+					.pos-atr(@zIndex: 1);
+					.db();
+					.wh(1em, 100%);
+					.fgc(#e7303e);
+					content: '*';
+					right: ~'-0.5em\9';
+				}
+			}
+			>input[type=text], >input[type=password], >input[type=email], >input[type=number], >select{
+				.whlh(@inputWidth, @fieldHeight, @fieldHeight);
+				.brd(1px, solid, @inpurBorderColor);
+				.brdr(5px);
+				.pdl(@inputPaddingLeft);
+				.pdr(@inputPaddingLeft);
+				// border-right: 3px;
+			}
+		}
+		> .field > .tip, > .field + .tip{
+			.fc(@tipFontSize, red);
+			.pdl(@labelWidth + @inputPaddingLeft + 1px);
+			.hlh(@tipHeight, @tipHeight);
+		}
+		> .field.verifyimg-box, > .field.verifytel-box{
+			> input{
+				width: 160px;
+			}
+			> img, > button{
+				.wh(78px, @fieldHeight);
+				.va-t();
+				.mgl(8px);
+			}
+			.btn-maker(@name: code;
+				@bgc: @white;
+				@color: @white;
+				@height: @fieldHeight;
+				@width: 78px;
+				);
+		}
+	}
+}
+
+// banner 轮播Banner
+.banner-slider-maker(@bannerHeight: 500px;
+	@radius: 6px;
+	@controllerBgColor: @white;
+	@controllerActiveBgColor: @white
+	){
+	.banner{
+		.pos-r();
+		.db();
+		.wh(100%, @bannerHeight);
+		z-index: 10;
+	}
+
+	.slider{
+		.pos-r();
+		.db();
+		height: @bannerHeight;
+		width: 100%;
+		z-index: 20;
+		> .slide{
+			.db();
+			.pos-a(@zIndex: 1);
+			.wh(100%, @bannerHeight);
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+		}
+		> .controller{
+			@controllerMargin: 9px;
+			.pos-abl(@bottom: -42px - @radius * 2; @left: 50%);
+			.ta-c();
+			.mg();
+			.pdt(21px);
+			.pdb(21px);
+			.pdl();
+			transform: translateX(-50%);
+			z-index: 30;
+			>li{
+				.dib();
+				.wh(@radius * 2, @radius * 2);
+				.brdr(@radius);
+				.mg(0, @controllerMargin, 0, @controllerMargin);
+				// .bgc(@controllerBgColor);
+				.bgc(@white);
+				transition: background-color .2s;
+				cursor: pointer;
+				box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.35) inset;
+				&.active{
+					.bgc(@controllerActiveBgColor);
+				}
+				// &.active:before{
+				// 	.pos-r();
+				// 	.db();
+				// 	.wh((@radius + 4) * 2, (@radius + 4) * 2);
+				// 	.bgc(@transparent);
+				// 	.brd(2px, solid, @white);
+				// 	.brdr((@radius + 4) * 2);
+				// 	content: '';
+				// 	top: -4px;
+				// 	left: -4px;
+				// }
+			}
+		}
+	}
+}
+
+.ul-ol-reset(){
+	list-style-type: none;
+	.mg(0);
+	.pdl(0);
+	>li{
+		.dib();
+		list-style-type: none;
+	}
+}
+
+// 文字不换行，溢出自动隐藏
+.nowrap(@width: auto){
+	overflow: hidden;
+	width: @width;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

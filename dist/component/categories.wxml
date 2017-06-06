@@ -1,0 +1,26 @@
+<!--categories.wxml-->
+<template name="categories">
+	<view hidden="{{isHide}}" animation="{{animationData}}" style="transform:translateY({{-sheight}}px)">
+		<view class="container">  
+			<!--左侧栏-->  
+			<scroll-view class="nav_left" scroll-y style="height: {{sheight}}px;">  
+				<block wx:for="{{categories}}" wx:key="unique">   
+					<view class="nav_left_items {{curNav == item.category_id ? 'active' : ''}}" bindtap="onClickLv1Category" data-index="{{index}}" data-id="{{item.category_id}}" >{{item.category_name}}</view>  
+				</block>  
+			</scroll-view>  
+			<!--右侧栏-->  
+			<scroll-view class="nav_right" scroll-y style="height: {{sheight}}px;">  
+				<view wx:if="{{categories[curIndex].list}}">  
+					<block wx:for="{{categories[curIndex].list}}" wx:key="unique">  
+						<!--<view class="weui-cells weui-cells_after-title">-->
+							<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="onClickLv2Category" data-id="{{item.category_id}}">
+								<view class="weui-cell__bd">{{item.category_name}}</view>
+							</view>
+						<!--</view>-->
+					</block>  
+				</view>  
+				<view wx:else>暂无数据</view>  
+			</scroll-view>  
+		</view> 
+	</view> 
+</template>

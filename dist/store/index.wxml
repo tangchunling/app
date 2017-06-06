@@ -1,0 +1,109 @@
+<view class="block">
+  <view class="title v1">
+    <text>今日营收</text>  
+  </view>
+  <view class="title v2">
+    <text>¥{{dashboard.sales_amount}}</text>
+  </view>
+  <div class="weui-flex">
+    <div class="weui-flex__item">
+      <div>
+        <text wx:if="{{dashboard.customer_flow != dashboard.prev_customer_flow}}" style="width:20rpx;visibility:hidden;">.</text>
+        {{dashboard.customer_flow}}
+        <image class="ico" wx:if="{{dashboard.customer_flow > dashboard.prev_customer_flow}}" src="../images/up_22.png"></image>
+        <image class="ico" wx:if="{{dashboard.customer_flow < dashboard.prev_customer_flow}}" src="../images/down_22.png"></image>
+      </div>
+      <div class="gray">客流</div>
+    </div>
+    <div class="weui-flex__item">
+      <div>
+        <text wx:if="{{dashboard.customer_avg_price != dashboard.prev_customer_avg_price}}" style="width:20rpx;visibility:hidden;">.</text>
+        {{dashboard.customer_avg_price}}
+        <image class="ico" wx:if="{{dashboard.customer_avg_price > dashboard.prev_customer_avg_price}}" src="../images/up_22.png"></image>
+        <image class="ico" wx:if="{{dashboard.customer_avg_price < dashboard.prev_customer_avg_price}}" src="../images/down_22.png"></image>
+      </div>
+      <div class="gray">平均客单价</div>
+    </div>
+  </div>
+  <div class="weui-flex mgt20">
+    <div class="weui-flex__item">
+      <div>
+        <text wx:if="{{dashboard.new_member_num != dashboard.prev_new_member_num}}" style="width:20rpx;visibility:hidden;">.</text>
+        {{dashboard.new_member_num}}
+        <image class="ico" wx:if="{{dashboard.new_member_num > dashboard.prev_new_member_num}}" src="../images/up_22.png"></image>
+        <image class="ico" wx:if="{{dashboard.new_member_num < dashboard.prev_new_member_num}}" src="../images/down_22.png"></image>
+      </div>
+      <div class="gray">会员开卡</div>
+    </div>
+    <div class="weui-flex__item">
+      <div>
+        <text wx:if="{{dashboard.member_deposit_amount != dashboard.prev_member_deposit_amount}}" style="width:20rpx;visibility:hidden;">.</text>
+        {{dashboard.member_deposit_amount}}
+        <image class="ico" wx:if="{{dashboard.member_deposit_amount > dashboard.prev_member_deposit_amount}}" src="../images/up_22.png"></image>
+        <image class="ico" wx:if="{{dashboard.member_deposit_amount < dashboard.prev_member_deposit_amount}}" src="../images/down_22.png"></image>
+      </div>
+      <div class="gray">会员充值</div>
+    </div>
+    <div class="weui-flex__item">
+      <div>
+        <text wx:if="{{dashboard.member_sales_amount != dashboard.prev_member_sales_amount}}" style="width:20rpx;visibility:hidden;">.</text>
+        {{dashboard.member_sales_amount}}
+        <image class="ico" wx:if="{{dashboard.member_sales_amount > dashboard.prev_member_sales_amount}}" src="../images/up_22.png"></image>
+        <image class="ico" wx:if="{{dashboard.member_sales_amount < dashboard.prev_member_sales_amount}}" src="../images/down_22.png"></image>
+      </div>
+      <div class="gray">会员消费</div>
+    </div>
+  </div>
+</view>
+<view class="block">
+  <div class="weui-grids">
+    <view url="/store/order/yaohuo" class="weui-grid" bindtap="goYaohuo">
+      <div class="weui-grid__icon">
+        <image src="../images/yaohuo_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        要货
+      </p>
+    </view>
+    <a href="javascript:;" class="weui-grid">
+      <div class="weui-grid__icon">
+        <image src="../images/shouhuo_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        收货
+      </p>
+    </a>
+    <a href="javascript:;" class="weui-grid">
+      <div class="weui-grid__icon">
+        <image src="../images/tuicang_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        退仓
+      </p>
+    </a>
+    <a href="javascript:;" class="weui-grid">
+      <div class="weui-grid__icon">
+        <image src="../images/diaobo_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        调拨
+      </p>
+    </a>
+    <a href="javascript:;" class="weui-grid">
+      <div class="weui-grid__icon">
+        <image src="../images/pandian_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        盘点
+      </p>
+    </a>
+    <a href="javascript:;" class="weui-grid">
+      <div class="weui-grid__icon">
+        <image src="../images/baobiao_64.png"></image>
+      </div>
+      <p class="weui-grid__label">
+        门店报表
+      </p>
+    </a>
+  </div>
+</view>

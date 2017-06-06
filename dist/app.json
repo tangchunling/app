@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "login/index",
+    "store/index",
+    "store/order/forbidden",
+    "store/order/yaohuo",
+    "purchase/index",
+    "purchase/caigou_step_one",
+    "purchase/good_create"
+  ],
+  "window": {
+    "enablePullDownRefresh": false
+  }
+}

@@ -1,0 +1,12 @@
+<view class="page">
+  <image class="hint" src="../../images/fill_186_186.png"></image>
+  <view class="t1">
+    <text>非要货时段</text>
+  </view>
+  <view class="t2">
+    <text>请于每天{{startTime}}~{{endTime}}要货</text>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn weui-btn-primary" bindtap="goIndex">知道了</button>
+  </view>  
+</view>

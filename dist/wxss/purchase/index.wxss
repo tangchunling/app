@@ -1,0 +1,102 @@
+/**
+ * JUI Less global variables / config file
+ * 基本设置
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+.c-normal {
+  color: #000;
+}
+.c-week {
+  color: #888888;
+}
+.c-success {
+  color: #FF4F00;
+}
+.f32 {
+  font-size: 32rpx;
+}
+.f28 {
+  font-size: 28rpx;
+}
+.f24 {
+  font-size: 24rpx;
+}
+.f36 {
+  font-size: 36rpx;
+}
+.f26 {
+  font-size: 26rpx;
+}
+.common-cell {
+  margin-bottom: 10rpx;
+  background: #fff;
+}
+.common-cell::before {
+  border-top: none;
+}
+.common-cells {
+  background: transparent;
+}
+/**
+ * JUI Less utils v1.2
+ * 基本工具：常用的属性集
+ *
+ * @author: Jerry
+ * @email: superzcj_001@163.com
+ * @copyright 2015 Jerry
+ */
+/* index.wxss */
+.page {
+  background: #E5E5E5;
+  height: 100vh;
+}
+.page .head {
+  width: 100vw;
+  height: 180rpx;
+  margin: 0 auto;
+}
+.placeholder {
+  padding: 10px 0;
+  text-align: center;
+  background-color: #fff;
+  height: 100%;
+  color: #cfcfcf;
+  position: relative;
+}
+.block {
+  height: 300rpx;
+}
+.weui-flex .weui-flex__item:nth-child(2n+1) {
+  margin-right: 3px;
+  margin-left: 0;
+}
+.weui-flex .weui-flex__item:nth-child(2n) {
+  margin-left: 3px;
+  margin-right: 0;
+}
+.placeholder .tag {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 96rpx;
+  height: 42rpx;
+  color: #fff;
+  background: #FF4F23;
+  line-height: 42rpx;
+  font-size: 30rpx;
+}
+.placeholder image {
+  display: block;
+  width: 96rpx;
+  height: 96rpx;
+  margin: 68rpx auto 0 auto;
+}
+.placeholder text {
+  color: #000;
+  line-height: 41rpx;
+  margin-top: 30rpx;
+  font-size: 30rpx;
+}
